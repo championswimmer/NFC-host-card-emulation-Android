@@ -1,0 +1,94 @@
+<!--
+  Copyright 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<resources>
+    <string name="sample_show_log">Show Log</string>
+    <string name="sample_hide_log">Hide Log</string>
+    <string name="service_name">Emulation Service</string>
+    <string name="card_title">DTU</string>
+    <string name="large_payload">"IEEE DTU Orientation
+
+Dipankar Nigam
+Broad audience attention grabbing introduction.
+We are IEEE DTU
+Welcome to DTU. DTU is awesome. The Week ranks us 10th and India Today 9th.
+Research, academics, placements, co-curricular exposure at par with IITs if not better.
+The best ever contribution to the world of technology by an Indian, Intel Pentium chip, project headed and conceptualized by Vinod Dham, DCE alumnus. Jabong founder, ITC Chairman, Durjoy Datta, Sushant Singh Rajput (drop out), all DCE alumnus.
+Introduction to IEEE.
+Full form Institute of Electrical and Electronics Engineers (IEEE).
+Formed in 1963 from the amalgamation of the American Institute of Electrical Engineers (AIEE) and the Institute of Radio Engineers. The members of the AIEE included some of the most prominent inventors like Nikola Tesla, Thomas Alva Edison and Graham Bell.
+World’s largest association of technical professionals with about 425,000 members in over 160 countries.
+It is also a leading standards development organization for the development of industrial standards (having developed over 900 active industry technical standards) in a broad range of disciplines, including Ethernet, Wi-Fi and Bluetooth.
+The IEEE logo is a diamond-shaped design which illustrates the right hand grip rule embedded in Benjamin Franklin's kite, and it was created at the time of the 1963 merger.
+The IEEE includes 38 technical Societies, organized around specialized technical fields, with more than 300 local organizations that hold regular meetings.
+
+Aditya Salapaka
+Introduction to IEEE DTU
+Founded in 1982, oldest in Delhi. Largest in North India. One of the largest in Asia Pacific Region.
+Growing at a steady pace. Over 250+ new first year members last year. Second years and Third years also joined
+
+IEEE DTU Activities
+Workshops. Various fields and avenues. Taken by students and/or professionals. Done in and outside of college.
+Cyber forensics
+MBA workshop by Byju Raveendran
+EMBS Hire me workshop
+GTBIT Image Processing workshop
+TechWeek
+Weeklong event coming up from 21-27.
+Workshop series. For all, not only members.
+Workshops on various topics such as Programming, WebD, Designing, Robotics, Solidworks.
+Taken solely by IEEE DTU student members.
+Hackathon
+120 participants from 14 colleges of Delhi.
+Sponsors : HackerRank, Github, Reliance, Google, Gaana.com
+Talk sessions by GSoC participants, startup founders, entrepreneurs.
+Prizes : Lenovo tablets, Sennheiser headphones
+Mohd Fahad
+IEEE DTU Activities
+SIGs
+Special interest groups.
+Basically tutorial classes taken by seniors for junior IEEE members.
+Seniors can also attend to learn from fellow seniors.
+Tech and Non-tech topics.
+Programming
+Image processing
+Robotics
+Finance
+Embedded Systems
+Simulation
+Web D
+Growing every year.
+CurrentX for apti and current affairs, Finance for stock market and shares etc., OSS for open source development added last year.
+R language for analysts, Solidworks/CAD for Mechanical department students, PLC/SCADA for circuit branches to be added this year.
+Only for IEEE members.
+No prior knowledge required. Topics covered from scratch.
+Only quest to learn needed.
+Industrial trips
+PES trip to TERI (Tata Energy Research Institute) plant.
+PES trip to Khoiri village for solar electrification.
+WIE and PES trip to government school for teaching them.
+Seminars and Symposiums
+Symposium on standards held in 2012. Talks and paper presentations by internationally and nationally renowned professionals and scientists.
+Seminar on Technological Advancement and Human Excellence held in February. Attended by IEEE Standards.
+Attended by Konstantinos Karachalios, Managing Director, IEEE-Standards Association and Karen Bartleson, President of IEEE Standards Association for 2013-14.
+Fests
+Most awaited time for freshers.
+Two large scale fests held annually
+Repertoire, annual Biz-Tech fest
+Held in October.
+Three events, quiz, B-plan event, online stock market.
+Troika, annual technical fest.
+Held in February."</string>
+</resources>
