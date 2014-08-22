@@ -4,3 +4,4 @@
 
 [![Build Status](https://travis-ci.org/championswimmer/NFC-host-card-emulation-Android.svg)](https://travis-ci.org/championswimmer/NFC-host-card-emulation-Android)
 
+The CardEmulation app can be used on Kitkat (4.4) and above devices only
