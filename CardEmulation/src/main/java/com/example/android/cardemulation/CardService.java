@@ -18,8 +18,15 @@ package com.example.android.cardemulation;
 
 import android.nfc.cardemulation.HostApduService;
 import android.os.Bundle;
+import android.os.Environment;
+import android.widget.Toast;
+
 import com.example.android.common.logger.Log;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -53,6 +60,12 @@ public class CardService extends HostApduService {
     private static final byte[] UNKNOWN_CMD_SW = HexStringToByteArray("0000");
     private static final byte[] SELECT_APDU = BuildSelectApdu(SAMPLE_LOYALTY_CARD_AID);
     private static final byte[] GET_DATA_APDU = BuildGetDataApdu();
+
+    /*File IO Stuffs*/
+    File sdcard = Environment.getExternalStorageDirectory();
+    File file = new File(sdcard,"file.txt");
+    StringBuilder text = new StringBuilder();
+    int pointer;
 
     /**
      * Called if the connection to the NFC card is lost, in order to let the application know the
@@ -93,11 +106,18 @@ public class CardService extends HostApduService {
             String account = "some string random data some string random data some string random data some string random data some string random data some string random data some string random data some string random data some string data some string random data some string";
             byte[] accountBytes = account.getBytes();
             Log.i(TAG, "Sending account number: " + account);
+            readFromFile();
             return ConcatArrays(accountBytes, SELECT_OK_SW);
         } else if ((Arrays.equals(GET_DATA_APDU, commandApdu))) {
-            String account = "whatever string secondrandom data whatever string secondrandom data whatever string secondrandom data whatever string secondrandom data whatever string secondrandom data whatever string secondrandom data whatever string secondrandom data";
-            byte[] accountBytes = account.getBytes();
-            Log.i(TAG, "Sending account number: " + account);
+            String stringToSend;
+            try {
+                stringToSend = text.toString().substring(pointer, pointer + 200);
+            } catch (IndexOutOfBoundsException e) {
+                Toast.makeText(this, "Reached the end of the file", Toast.LENGTH_SHORT).show();
+                stringToSend = "END";
+            }
+            pointer += 200;byte[] accountBytes = stringToSend.getBytes();
+            Log.i(TAG, "Sending substring, pointer : " + pointer + " , " + stringToSend);
             return ConcatArrays(accountBytes, SELECT_OK_SW);
         }
 
@@ -190,5 +210,20 @@ public class CardService extends HostApduService {
             offset += array.length;
         }
         return result;
+    }
+
+    private void readFromFile() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
