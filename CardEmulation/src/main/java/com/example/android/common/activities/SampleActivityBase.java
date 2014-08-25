@@ -16,8 +16,8 @@
 
 package com.example.android.common.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
 import com.example.android.common.logger.Log;
 import com.example.android.common.logger.LogWrapper;
@@ -25,7 +25,7 @@ import com.example.android.common.logger.LogWrapper;
 /**
  * Base launcher activity, to handle most of the common plumbing for samples.
  */
-public class SampleActivityBase extends FragmentActivity {
+public class SampleActivityBase extends Activity {
 
     public static final String TAG = "SampleActivityBase";
 
