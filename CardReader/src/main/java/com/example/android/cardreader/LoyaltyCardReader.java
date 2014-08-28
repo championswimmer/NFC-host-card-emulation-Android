@@ -18,6 +18,7 @@ package com.example.android.cardreader;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
+import android.os.SystemClock;
 import android.widget.Toast;
 
 import com.example.android.common.AESHelper;
@@ -43,6 +44,10 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
     private static final String GET_DATA_APDU_HEADER = "00CA0000";
     // "OK" status word sent in response to SELECT AID command (0x9000)
     private static final byte[] SELECT_OK_SW = {(byte) 0x90, (byte) 0x00};
+
+    String gotData = "", finalGotData = "";
+
+    long timeTaken = 0;
 
     // Weak reference to prevent retain loop. mAccountCallback is responsible for exiting
     // foreground mode before it becomes invalid (e.g. during onPause() or onStop()).
@@ -99,19 +104,26 @@ public class LoyaltyCardReader implements NfcAdapter.ReaderCallback {
                     String accountNumber = new String(payload, "UTF-8");
                     Log.i(TAG, "Received: " + accountNumber);
                     // Inform CardReaderFragment of received account number
-                    if (accountNumber.length()>10) {
-                        byte[] getCommand = BuildGetDataApdu();
-                        Log.i(TAG, "Sending: " + ByteArrayToHexString(getCommand));
-                        result = isoDep.transceive(getCommand);
-                        resultLength = result.length;
-                        Log.i(TAG, "Received length : " + resultLength);
-                        byte[] statusWordNew = {result[resultLength-2], result[resultLength-1]};
-                        payload = Arrays.copyOf(result, resultLength-2);
-                        if (Arrays.equals(SELECT_OK_SW, statusWordNew)) {
-                            String gotData = new String(payload, "UTF-8");
-                            Log.i(TAG, "Received: " + gotData);
-                            mAccountCallback.get().onAccountReceived(gotData);
+                    if (true) {
+                        timeTaken = System.currentTimeMillis();
+                        while (!(gotData.contains("END"))) {
+                            byte[] getCommand = BuildGetDataApdu();
+                            Log.i(TAG, "Sending: " + ByteArrayToHexString(getCommand));
+                            result = isoDep.transceive(getCommand);
+                            resultLength = result.length;
+                            Log.i(TAG, "Received length : " + resultLength);
+                            byte[] statusWordNew = {result[resultLength - 2], result[resultLength - 1]};
+                            payload = Arrays.copyOf(result, resultLength - 2);
+                            if (Arrays.equals(SELECT_OK_SW, statusWordNew)) {
+                                gotData = new String(payload, "UTF-8");
+                                Log.i(TAG, "Received: " + gotData);
+                                finalGotData = finalGotData + gotData;
+                                Log.i(TAG, "Data transferred : " + finalGotData.length());
+                                Log.i(TAG, "Time taken: " + (System.currentTimeMillis() - timeTaken));
+
+                            }
                         }
+                        mAccountCallback.get().onAccountReceived(gotData);
 
                     }
                     //mAccountCallback.get().onAccountReceived(accountNumber);

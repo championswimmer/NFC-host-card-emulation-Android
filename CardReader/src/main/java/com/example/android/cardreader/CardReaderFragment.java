@@ -41,6 +41,8 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
     public LoyaltyCardReader mLoyaltyCardReader;
     private TextView mAccountField;
 
+    StringBuilder stringReceived;
+
     /** Called when sample is created. Displays generic UI with welcome text. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,6 +101,10 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
     public void onAccountReceived(final String account) {
         // This callback is run on a background thread, but updates to UI elements must be performed
         // on the UI thread.
+        stringReceived.append(account);
+        if (account.contains("END")) {
+
+        }
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
